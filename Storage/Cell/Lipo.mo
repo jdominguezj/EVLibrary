@@ -1,6 +1,7 @@
 within EVLibrary.Storage.Cell;
 
 model Lipo
+//Lipo single cell
  extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor1 annotation(
     Placement(visible = true, transformation(origin = {54, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
