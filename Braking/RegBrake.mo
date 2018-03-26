@@ -22,8 +22,6 @@ model RegBrake
   Modelica.Electrical.Analog.Basic.Ground ground1 annotation(
     Placement(visible = true, transformation(origin = {104, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(n, ground1.p) annotation(
-    Line(points = {{100, 0}, {100, 0}, {100, -18}, {104, -18}, {104, -28}, {104, -28}}, color = {0, 0, 255}));
   rnowf = pp * Mav;
 //Maxima fuerza necesario para detener el vehiculo
   bkf = g * Mav;
@@ -34,7 +32,11 @@ equation
   preg = if rnowf <= 0.3 * bkf then telectric * 0.0010 / 0.002 else 0;
   ireg = if rnowf <= 0.3 * bkf then preg / 380 else 0;
   p.i = ireg;
+ 
   //p.i + n.i = 0;
+  connect(n, ground1.p) annotation(
+    Line(points = {{100, 0}, {100, 0}, {100, -18}, {104, -18}, {104, -28}, {104, -28}}, color = {0, 0, 255}));
+ 
   annotation(
     Icon(graphics = {Rectangle(extent = {{-100, 100}, {100, -100}}), Text(origin = {4, 9}, extent = {{-42, 35}, {42, -35}}, textString = "RB")}, coordinateSystem(initialScale = 0.1)));
 
