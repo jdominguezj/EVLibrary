@@ -17,9 +17,9 @@ model Agressive
   Modelica.Blocks.Interfaces.RealOutput Accel annotation(
     Placement(visible = true, transformation(origin = {88, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput BoolDec annotation(
-    Placement(visible = true, transformation(origin = {86, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-80, -110}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+    Placement(visible = true, transformation(origin = {86, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-80, 110}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   Modelica.Blocks.Interfaces.BooleanOutput BoolAcce annotation(
-    Placement(visible = true, transformation(origin = {86, -28}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-40, -110}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+    Placement(visible = true, transformation(origin = {86, -28}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-40, 110}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
 equation
   connect(not1.y, BoolAcce) annotation(
     Line(points = {{62, -28}, {78, -28}, {78, -28}, {84, -28}}, color = {255, 0, 255}));
