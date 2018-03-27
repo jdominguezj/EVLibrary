@@ -9,7 +9,7 @@ model Test1
     Placement(visible = true, transformation(origin = {-58, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Kinematics kinematics1 annotation(
     Placement(visible = true, transformation(origin = {-18, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Components.Engine engine1 annotation(
+  EVLibrary.Components.Engine engine1(n2 = 0.85)  annotation(
     Placement(visible = true, transformation(origin = {18, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(engine1.Gearboxinput, kinematics1.ff) annotation(
