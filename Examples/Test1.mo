@@ -12,21 +12,21 @@ model Test1
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Engine_R engine_R1(n2 = 0.94)  annotation(
     Placement(visible = true, transformation(origin = {10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Components.Converter converter1 annotation(
-    Placement(visible = true, transformation(origin = {52, 58}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  EVLibrary.Braking.RegBrake regBrake annotation(
+    Placement(visible = true, transformation(origin = {46, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Electrical.Analog.Basic.Ground ground annotation(
+    Placement(visible = true, transformation(origin = {66, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(engine_R1.PowerEngine, converter1.ForceRequiredByMotor) annotation(
-    Line(points = {{22, 50}, {38, 50}, {38, 50}, {40, 50}}, color = {0, 0, 127}));
-  connect(agressive1.Vel, converter1.Vel) annotation(
-    Line(points = {{-58, 58}, {-56, 58}, {-56, 66}, {40, 66}, {40, 66}}, color = {0, 0, 127}));
-  connect(agressive1.BoolAcce, converter1.BoolA) annotation(
-    Line(points = {{-74, 40}, {-74, 26}, {46, 26}, {46, 46}}, color = {255, 0, 255}));
+  connect(regBrake.n, ground.p) annotation(
+    Line(points = {{56, 50}, {66, 50}, {66, 34}, {66, 34}}, color = {0, 0, 255}));
+  regBrake.a=agressive1.Accel;
+  connect(agressive1.BoolDec, regBrake.BoolDec) annotation(
+    Line(points = {{-78, 62}, {-78, 62}, {-78, 80}, {40, 80}, {40, 62}, {40, 62}}, color = {255, 0, 255}));
   connect(kinematics1.ff, engine_R1.Gearboxin) annotation(
     Line(points = {{-19, 50}, {-2, 50}}, color = {0, 0, 127}));
   connect(agressive1.Vel, kinematics1.Vel) annotation(
     Line(points = {{-59, 58}, {-42, 58}}, color = {0, 0, 127}));
   connect(agressive1.Accel, kinematics1.Accel) annotation(
     Line(points = {{-59, 52}, {-42, 52}}, color = {0, 0, 127}));
-  
-annotation(
+  annotation(
     Diagram);end Test1;

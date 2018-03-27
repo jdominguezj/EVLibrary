@@ -14,9 +14,9 @@ model RegBrake
   Modelica.SIunits.Torque tmechanic;
   Modelica.SIunits.Force bkf;
   Modelica.Blocks.Interfaces.RealInput a annotation(
-    Placement(visible = true, transformation(origin = {-106, 32}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-106, 32}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanInput BoolDec annotation(
-    Placement(visible = true, transformation(origin = {-6, 38}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {0, 120}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
+    Placement(visible = true, transformation(origin = {-6, 38}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-60, 120}, extent = {{-20, -20}, {20, 20}}, rotation = -90)));
   Modelica.SIunits.Power preg;
   Modelica.SIunits.Current ireg;
   Modelica.Electrical.Analog.Basic.Ground ground1 annotation(
