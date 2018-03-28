@@ -1,0 +1,8 @@
+within EVLibrary.Components;
+
+model Probe
+  parameter Modelica.SIunits.Resistance R;
+  extends EVLibrary.Interfaces.Twopin;
+equation
+  v = i*R "Ohm's law";
+end Probe;

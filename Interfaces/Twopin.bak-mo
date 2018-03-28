@@ -1,0 +1,14 @@
+within EVLibrary.Interfaces;
+
+partial model Twopin "Common elements of two pin electrical components"
+  Modelica.Electrical.Analog.Interfaces.PositivePin pin_p annotation(
+    Placement(visible = true, transformation(origin = {-90, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-90, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Electrical.Analog.Interfaces.NegativePin pin_n annotation(
+    Placement(visible = true, transformation(origin = {82, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {82, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+protected
+  Modelica.SIunits.Voltage v=pin_p.v-pin_p.v;
+  Modelica.SIunits.Current i;
+equation
+  i= pin_p.i;
+  pin_p.i + pin_n.i = 0 "Conservation of charge";
+end Twopin;
