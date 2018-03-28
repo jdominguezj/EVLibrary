@@ -21,9 +21,10 @@ extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   Modelica.Electrical.Analog.Basic.Ground ground1 annotation(
     Placement(visible = true, transformation(origin = {104, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput vel annotation(
-    Placement(visible = true, transformation(origin = {-78, 70}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));  equation
-  rnowf = vel * Mav; //Fuerza necesaria [en cada instante de tiempo en funcion del porcentaje de frenado
-  bkf = g * Mav;    //Force needly to stop vehicle at gravity deceleration
+    Placement(visible = true, transformation(origin = {-78, 70}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));  
+   equation
+  rnowf = pp * Mav; //Fuerza necesaria [en cada instante de tiempo en funcion del porcentaje de frenado
+  bkf   = g * Mav;    //Force needly to stop vehicle at gravity deceleration
   pp = if a < (-0.01) then abs(a) else 0;
   telectric = if rnowf <= 0.3 * bkf then rnowf * Rw else 0; //Torque electric
   tmechanic = if rnowf >= 0.3 * bkf then rnowf * Rw else 0; //Torque mechanic

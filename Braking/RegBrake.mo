@@ -25,7 +25,7 @@ model RegBrake
   bkf = g * Mav;    //Force needly to stop vehicle at gravity deceleration
   pp = if a < (-0.01) then abs(a) else 0;
   telectric = if rnowf <= 0.3 * bkf then rnowf * Rw else 0; //Torque electric
-  tmechanic = if rnowf >= 0.3 * bkf then rnowf * Rw else 0; //Torque mechanic
+  tmechanic = if rnowf > 0.3 * bkf then rnowf * Rw else 0; //Torque mechanic
   //preg = if rnowf <= 0.3 * bkf then telectric * 0.0010 / 0.002 else 0;
   preg = if rnowf <= 0.3 * bkf then telectric/ 0.002 else 0;
   ireg = if rnowf <= 0.3 * bkf then preg / 380 else 0;
