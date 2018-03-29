@@ -2,12 +2,11 @@ within EVLibrary.Braking;
 
 model RegBrake
   extends Modelica.Electrical.Analog.Interfaces.TwoPin;
-  parameter Real Mav(displayUnit = "Kg",quantity = "Mass", unit = "Kg");
-  parameter Real Rw(displayUnit = "Meters",quantity = "Radius", unit = "m");
-  Real pp(displayUnit = "m/s^2",quantity = "Pedal Position", unit = "m/s^2") "Pedal position deceleration in m/s^2";
-  Real g = 10;
-  //gravedad
-  Real rnowf(quantity = "Rightnow max force needed to stop vehicle", unit = "N.m");
+  parameter Real Mav(displayUnit = "Kg",quantity = "Mass", unit = "Kg") "Vehicle's mass at the CoG and four point contact at tires with the track";
+  parameter Real Rw(displayUnit = "Meters",quantity = "Radius", unit = "m") "Radius of wheel";
+  Real pp(displayUnit = "m/s^2",quantity = "Pedal Position", unit = "m/s^2") "Deceleration in m/s^2 anytime";
+  Real g = 10; //gravedad
+  Real rnowf(quantity = "Rightnow force needed to stop vehicle", unit = "N.m");
   //  Modelica.SIunits.Voltage v "Voltage drop between the two pins (= p.v - n.v)";
   Modelica.SIunits.Torque telectric;
   Modelica.SIunits.Torque tmechanic;
@@ -21,14 +20,13 @@ model RegBrake
   Modelica.Electrical.Analog.Basic.Ground ground1 annotation(
     Placement(visible = true, transformation(origin = {104, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   equation
-  rnowf = pp * Mav; //Fuerza necesaria [en cada instante de tiempo en funcion del porcentaje de frenado
-  bkf = g * Mav;    //Force needly to stop vehicle at gravity deceleration
+  rnowf = pp * Mav; 
+  bkf = g * Mav;    //Max Force needly to stop vehicle at gravity deceleration
   pp = if a < (-0.01) then abs(a) else 0;
-  telectric = if rnowf <= 0.3 * bkf then rnowf * Rw else 0; //Torque electric
-  tmechanic = if rnowf > 0.3 * bkf then rnowf * Rw else 0; //Torque mechanic
-  //preg = if rnowf <= 0.3 * bkf then telectric * 0.0010 / 0.002 else 0;
-  preg = if rnowf <= 0.3 * bkf then telectric/ 0.002 else 0;
-  ireg = if rnowf <= 0.3 * bkf then preg / 380 else 0;
+  telectric = if rnowf <= 0.4 * bkf then rnowf * Rw else 0;   //Torque electric
+  tmechanic = if rnowf > 0.4 * bkf then rnowf * Rw else 0;    //Torque mechanic
+  preg = if rnowf <= 0.4 * bkf then telectric/ 0.002 else 0;  //Interval time simulation
+  ireg = if rnowf <= 0.4 * bkf then preg / 380 else 0;
   p.i = ireg;
  
   //p.i + n.i = 0;
