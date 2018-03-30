@@ -8,7 +8,7 @@ model Kinematics
     Placement(visible = true, transformation(origin = {52, 30}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
   Modelica.SIunits.Force ft, fa, fr, fg;
   Modelica.Blocks.Interfaces.RealOutput ff annotation(
-      Placement(visible = true, transformation(origin = {-62, 6}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Placement(visible = true, transformation(origin = {-62, 6}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {110, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Vel annotation(
       Placement(visible = true, transformation(origin = {-78, 70}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Accel annotation(
