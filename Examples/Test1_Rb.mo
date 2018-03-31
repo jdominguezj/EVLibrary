@@ -2,46 +2,48 @@ within EVLibrary.Examples;
 
 model Test1_Rb
   EVLibrary.Chassis.Prius prius1(tr = 1)  annotation(
-    Placement(visible = true, transformation(origin = {-55, 73}, extent = {{-33, -33}, {33, 33}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-67, -47}, extent = {{-33, -33}, {33, 33}}, rotation = 0)));
   EVLibrary.Road.Asphalt asphalt1 annotation(
-    Placement(visible = true, transformation(origin = {48, 74}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-10, -42}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   EVLibrary.Profiles.Agressive agressive1 annotation(
-    Placement(visible = true, transformation(origin = {-70, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-70, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Kinematics kinematics1 annotation(
-    Placement(visible = true, transformation(origin = {-30, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-30, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Engine_R engine_R1(n2 = 0.94) annotation(
-    Placement(visible = true, transformation(origin = {10, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {10, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Converter converter annotation(
-    Placement(visible = true, transformation(origin = {62, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {62, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Storage.Cell.Lipo lipo annotation(
-    Placement(visible = true, transformation(origin = {62, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Braking.RegBrake regBrake(Mav = prius1.Mv, Rw = prius1.Rw) annotation(
-    Placement(visible = true, transformation(origin = {62, -76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {62, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  EVLibrary.Braking.RegBrake regBrake(Mav = prius1.Mv, Rw = prius1.Rw, vel=agressive1.Vel) annotation(
+    Placement(visible = true, transformation(origin = {62, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Supercapacitors.Components.SupercapacitorBasic supercapacitorBasic annotation(
-    Placement(visible = true, transformation(origin = {62, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {62, -12}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
 equation
-  connect(regBrake.p, supercapacitorBasic.pin_p) annotation(
-    Line(points = {{52, -76}, {40, -76}, {40, -40}, {52, -40}, {52, -40}}, color = {0, 0, 255}));
-  connect(regBrake.n, supercapacitorBasic.pin_n) annotation(
-    Line(points = {{72, -76}, {80, -76}, {80, -40}, {72, -40}, {72, -40}}, color = {0, 0, 255}));
-  connect(supercapacitorBasic.pin_n, lipo.n) annotation(
-    Line(points = {{72, -40}, {80, -40}, {80, -4}, {72, -4}, {72, -4}}, color = {0, 0, 255}));
-  connect(converter.pin_n, lipo.n) annotation(
-    Line(points = {{72, 22}, {80, 22}, {80, -4}, {72, -4}, {72, -4}}, color = {0, 0, 255}));
-  connect(converter.pin_p, lipo.p) annotation(
-    Line(points = {{54, 22}, {40, 22}, {40, -4}, {52, -4}, {52, -4}}, color = {0, 0, 255}));
-  connect(supercapacitorBasic.Iregb, lipo.Irb) annotation(
-    Line(points = {{62, -28}, {62, -16}}, color = {0, 0, 127}));
-  connect(engine_R1.PowerEngine, converter.ForceRequiredByMotor) annotation(
-    Line(points = {{21, 28}, {50, 28}}, color = {0, 0, 127}));
-  connect(kinematics1.ff, engine_R1.Gearboxin) annotation(
-    Line(points = {{-19, 28}, {-2, 28}}, color = {0, 0, 127}));
   connect(lipo.Irb, supercapacitorBasic.Iregb) annotation(
-    Line(points = {{60, -14}, {60, -14}, {60, -28}, {60, -28}}, color = {0, 0, 127}));
-  connect(agressive1.Vel, kinematics1.Vel) annotation(
-    Line(points = {{-59, 30}, {-42, 30}}, color = {0, 0, 127}));
+    Line(points = {{60, -14}, {60, -21}, {62, -21}, {62, 0}}, color = {0, 0, 127}));
+  connect(converter.pin_p, lipo.p) annotation(
+    Line(points = {{53, 48}, {41, 48}, {41, 22}, {53, 22}, {53, 22}, {51, 22}, {51, 22}}, color = {0, 0, 255}));
+  connect(converter.pin_n, lipo.n) annotation(
+    Line(points = {{71, 48}, {79, 48}, {79, 22}, {71, 22}, {71, 22}}, color = {0, 0, 255}));
+  connect(supercapacitorBasic.Iregb, lipo.Irb) annotation(
+    Line(points = {{62, 0}, {62, 10}}, color = {0, 0, 127}));
+  connect(lipo.p, supercapacitorBasic.pin_p) annotation(
+    Line(points = {{52, 22}, {46, 22}, {46, 24}, {40, 24}, {40, -12}, {52, -12}}, color = {0, 0, 255}));
+  connect(supercapacitorBasic.pin_n, lipo.n) annotation(
+    Line(points = {{72, -12}, {80, -12}, {80, 22}, {72, 22}}, color = {0, 0, 255}));
+  connect(regBrake.n, supercapacitorBasic.pin_n) annotation(
+    Line(points = {{72, -48}, {80, -48}, {80, -14}, {72, -14}}, color = {0, 0, 255}));
+  connect(regBrake.p, supercapacitorBasic.pin_p) annotation(
+    Line(points = {{52, -48}, {40, -48}, {40, -14}, {52, -14}}, color = {0, 0, 255}));
+  connect(engine_R1.PowerEngine, converter.ForceRequiredByMotor) annotation(
+    Line(points = {{21, 54}, {50, 54}}, color = {0, 0, 127}));
+  connect(kinematics1.ff, engine_R1.Gearboxin) annotation(
+    Line(points = {{-19, 54}, {-2, 54}}, color = {0, 0, 127}));
   connect(agressive1.Accel, kinematics1.Accel) annotation(
-    Line(points = {{-59, 24}, {-42, 24}}, color = {0, 0, 127}));
+    Line(points = {{-59, 50}, {-42, 50}}, color = {0, 0, 127}));
+  connect(agressive1.Vel, kinematics1.Vel) annotation(
+    Line(points = {{-59, 56}, {-42, 56}}, color = {0, 0, 127}));
   regBrake.a = agressive1.Accel;
   regBrake.BoolDec = agressive1.BoolDec;
   converter.BoolA = agressive1.BoolAcce;

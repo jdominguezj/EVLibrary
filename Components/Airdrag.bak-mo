@@ -1,0 +1,11 @@
+within EVLibrary.Components;
+
+model Airdrag
+
+  Modelica.SIunits.Force fa;
+
+equation
+
+annotation(
+    Icon(graphics = {Rectangle(extent = {{-100, 100}, {100, -100}})}));
+    end Airdrag;
