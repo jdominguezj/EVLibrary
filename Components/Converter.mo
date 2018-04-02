@@ -12,7 +12,7 @@ model Converter
   Modelica.Blocks.Interfaces.BooleanInput BoolA annotation(
     Placement(visible = true, transformation(origin = {-42, -6}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = { -120, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation  
-   pin_p.i = if BoolA then ((0.001/0.002) * (Vel * abs(ForceRequiredByMotor) / n3 / 380)) else 0;   
+   pin_p.i = if BoolA then ((0.001/0.002) * (Vel * abs(ForceRequiredByMotor) / n3 / 350)) else 0;   
  // v = (ForceRequiredByMotor*Vel)/i;
   //0.001 is the equivalent to divide by 1000 to obtain the v alues in Amperes, and 0.002 is the timestamp to know the current anytime. 380 is the maximum voltage reach by the battery
   annotation(

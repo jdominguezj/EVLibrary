@@ -174,7 +174,7 @@ QIAAAQIECBAgQIAAAQIE2ggIc9qMQiMECBAgQIAAAQIECBAgQIAAgVpAmFMbqSBAgAABAgQIECBAgAAB
 
       Placement(visible = true, transformation(origin = {40, -18.467}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 
-    Modelica.Electrical.Analog.Basic.Resistor Rp(R = 999999) "Resistor in parallel" annotation(
+    Modelica.Electrical.Analog.Basic.Resistor Rp(R = 99999) "Resistor in parallel" annotation(
 
       Placement(visible = true, transformation(origin = {-40, -20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 

@@ -42,7 +42,7 @@ model Lipo
     Placement(visible = true, transformation(origin = {14, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Elements.CTransL cTransL1 annotation(
     Placement(visible = true, transformation(origin = {14, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- Modelica.Blocks.Sources.Constant const1(k = -1)  annotation(
+ Modelica.Blocks.Sources.Constant const1(k = 1)  annotation(
     Placement(visible = true, transformation(origin = {-102, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Math.Product product1 annotation(
     Placement(visible = true, transformation(origin = {-28, -82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

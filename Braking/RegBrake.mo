@@ -24,10 +24,10 @@ model RegBrake
   rnowf = pp * Mav;  
   bkf = g * Mav;    //Max Force needly to stop vehicle at gravity deceleration
   pp = if a < (-0.01) then abs(a) else 0;
-  telectric = if rnowf <= 0.04 * bkf then rnowf * Rw else 0;   //Torque electric
-  tmechanic = if rnowf > 0.04* bkf then rnowf * Rw else 0;    //Torque mechanic
-  preg = if rnowf <= 0.04* bkf then telectric*vel/Rw else 0;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
-  ireg = if rnowf <= 0.04* bkf then preg / 380 else 0;
+  telectric = if rnowf <= 0.01* bkf then rnowf * Rw else 0;   //Torque electric
+  tmechanic = if rnowf > 0.01* bkf then rnowf * Rw else 0;    //Torque mechanic
+  preg =      if rnowf <= 0.01* bkf then telectric*vel/Rw else 0;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
+  ireg =      if rnowf <= 0.0* bkf then preg / 350 else 0;
   p.i = ireg;
  
   //p.i + n.i = 0;
