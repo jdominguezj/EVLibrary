@@ -1,6 +1,6 @@
 within EVLibrary.Examples.Driver1;
 
-model TestD1_Rb_A
+model TestD1_Rb_A3
   EVLibrary.Road.Asphalt asphalt1 annotation(
     Placement(visible = true, transformation(origin = {-10, -42}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   EVLibrary.Profiles.Agressive agressive1 annotation(
@@ -10,26 +10,26 @@ model TestD1_Rb_A
   EVLibrary.Components.Engine_R engine_R1(n2 = 0.94) annotation(
     Placement(visible = true, transformation(origin = {10, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.Converter converter annotation(
-    Placement(visible = true, transformation(origin = {62, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Storage.Cell.Lipo lipo annotation(
-    Placement(visible = true, transformation(origin = {60, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Braking.RegBrake regBrake(Mav = bolt1.Mv, Rw = bolt1.Rw, vel=agressive1.Vel) annotation(
-    Placement(visible = true, transformation(origin = {62, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Chassis.Bolt bolt1 annotation(
-    Placement(visible = true, transformation(origin = {-92, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {58, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  EVLibrary.Chassis.Bolt bolt1 annotation(
+    Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  EVLibrary.Braking.RegBrake2 regBrake(Mav = bolt1.Mv, Rw = bolt1.Rw, vel = agressive1.Vel) annotation(
+    Placement(visible = true, transformation(origin = {58, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Storage.Cell.Lipo2 lipo annotation(
+    Placement(visible = true, transformation(origin = {58, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(lipo.Irb, regBrake.Irb) annotation(
-    Line(points = {{60, 10}, {62, 10}, {62, -36}, {62, -36}}, color = {0, 0, 127}));
-  connect(lipo.n, regBrake.n) annotation(
-    Line(points = {{70, 22}, {78, 22}, {78, -48}, {72, -48}, {72, -48}}, color = {0, 0, 255}));
+  connect(regBrake.Irb, lipo.Irb) annotation(
+    Line(points = {{58, -14}, {58, -14}, {58, 2}, {58, 2}}, color = {0, 0, 127}));
+  connect(regBrake.n, lipo.n) annotation(
+    Line(points = {{68, -26}, {80, -26}, {80, 14}, {68, 14}, {68, 14}}, color = {0, 0, 255}));
   connect(regBrake.p, lipo.p) annotation(
-    Line(points = {{52, -48}, {42, -48}, {42, 22}, {50, 22}, {50, 22}}, color = {0, 0, 255}));
+    Line(points = {{48, -26}, {36, -26}, {36, 14}, {48, 14}, {48, 14}}, color = {0, 0, 255}));
   connect(converter.pin_n, lipo.n) annotation(
-    Line(points = {{71, 48}, {79, 48}, {79, 22}, {70, 22}}, color = {0, 0, 255}));
+    Line(points = {{68, 48}, {80, 48}, {80, 14}, {68, 14}, {68, 14}}, color = {0, 0, 255}));
   connect(converter.pin_p, lipo.p) annotation(
-    Line(points = {{53, 48}, {41, 48}, {41, 22}, {50, 22}}, color = {0, 0, 255}));
+    Line(points = {{50, 48}, {36, 48}, {36, 14}, {48, 14}, {48, 14}}, color = {0, 0, 255}));
   connect(engine_R1.PowerEngine, converter.ForceRequiredByMotor) annotation(
-    Line(points = {{21, 54}, {50, 54}}, color = {0, 0, 127}));
+    Line(points = {{21, 54}, {46, 54}}, color = {0, 0, 127}));
   connect(kinematics1.ff, engine_R1.Gearboxin) annotation(
     Line(points = {{-19, 54}, {-2, 54}}, color = {0, 0, 127}));
   connect(agressive1.Accel, kinematics1.Accel) annotation(
@@ -40,7 +40,9 @@ equation
   regBrake.BoolDec = agressive1.BoolDec;
   converter.BoolA = agressive1.BoolAcce;
   converter.Vel = agressive1.Vel;
-  //supercapacitorBasic.Dec = agressive1.BoolDec;
+  lipo.Accel = agressive1.BoolAcce;
+
+//supercapacitorBasic.Dec = agressive1.BoolDec;
   annotation(
     Diagram);
-end TestD1_Rb_A;
+end TestD1_Rb_A3;

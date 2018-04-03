@@ -16,7 +16,7 @@ model Kinematics
     fa = 1 / 2 *(asphalt1.ro) *(bolt1.cda)* Vel ^ 2;
     fr = (asphalt1.cr) *(bolt1.Mv)*(asphalt1.g) * cos(asphalt1.angle);
     fg = (bolt1.Mv) *(asphalt1.g) * sin(asphalt1.angle);
-    ft = tr / (bolt1.Rw) *(bolt1.Te) - (tr ^ 2 / (bolt1.Rw^2) * (bolt1.Je) + 1 /(bolt1.Rw^2) * (bolt1.Jw)) * Accel;
+    ft = (tr/(bolt1.Rw) *(bolt1.Te))- (tr ^ 2 / (bolt1.Rw^2) * (bolt1.Je) + (1 /(bolt1.Rw^2)) * (bolt1.Jw)) * Accel;
     ff = ft - (fa + fr + fg);
     annotation(
       Icon(graphics = {Rectangle(origin = {-1, 0}, extent = {{-99, 100}, {101, -100}}), Text(origin = {-22, 20}, extent = {{-50, 28}, {102, -64}}, textString = "Kinematics")}, coordinateSystem(initialScale = 0.1)));
