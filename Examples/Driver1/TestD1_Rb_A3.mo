@@ -12,7 +12,7 @@ model TestD1_Rb_A3
   EVLibrary.Components.Converter converter annotation(
     Placement(visible = true, transformation(origin = {58, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Chassis.Bolt bolt1 annotation(
-    Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-64, -42}, extent = {{-26, -26}, {26, 26}}, rotation = 0)));
   EVLibrary.Braking.RegBrake2 regBrake(Mav = bolt1.Mv, Rw = bolt1.Rw, vel = agressive1.Vel) annotation(
     Placement(visible = true, transformation(origin = {58, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Storage.Cell.Lipo2 lipo annotation(

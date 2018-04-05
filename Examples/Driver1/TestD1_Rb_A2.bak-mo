@@ -13,8 +13,8 @@ model TestD1_Rb_A2
     Placement(visible = true, transformation(origin = {62, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Storage.Cell.Lipo lipo annotation(
     Placement(visible = true, transformation(origin = {60, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Chassis.Bolt bolt1 annotation(
-    Placement(visible = true, transformation(origin = {-92, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  EVLibrary.Chassis.Bolt bolt1 annotation(
+    Placement(visible = true, transformation(origin = {-69, -41}, extent = {{-21, -21}, {21, 21}}, rotation = 0)));
   Braking.RegBrake2 regBrake(Mav = bolt1.Mv, Rw = bolt1.Rw, vel=agressive1.Vel) annotation(
     Placement(visible = true, transformation(origin = {60, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation

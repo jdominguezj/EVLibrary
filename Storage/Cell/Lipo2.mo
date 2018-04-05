@@ -12,7 +12,7 @@ model Lipo2
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 99999) annotation(
     Placement(visible = true, transformation(origin = {-92, -44}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 3600 * 158) annotation(
+  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 3600 * 42) annotation(
     Placement(visible = true, transformation(origin = {-72, -44}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent1 annotation(
     Placement(visible = true, transformation(origin = {14, -38}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

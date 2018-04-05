@@ -1,7 +1,7 @@
 within EVLibrary.Chassis;
 
 partial record Basic
-  parameter Real Mv;
+  parameter Real Mv; 
   parameter Real Je;
   parameter Real Jw;
   parameter Real Te;
