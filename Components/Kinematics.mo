@@ -1,7 +1,8 @@
 within EVLibrary.Components;
 
 model Kinematics
-  Real tr=1;
+//http://media.chevrolet.com/media/us/en/chevrolet/news.detail.html/content/Pages/news/us/en/2016/Jan/naias/chevy/0111-bolt-du.html
+  Real tr=7; //Final drive ratio: 7.05:1
   EVLibrary.Chassis.Bolt bolt1 annotation(
     Placement(visible = true, transformation(origin = {7.10543e-15, 26}, extent = {{-22, -22}, {22, 22}}, rotation = 0)));
   EVLibrary.Road.Asphalt asphalt1 annotation(
