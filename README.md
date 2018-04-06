@@ -1,4 +1,8 @@
 # EVLibrary
-A fully electrical vehicle library created on Modelica Language based on the library structure proposed by (T. Trentelman, J. Sutherland, K. Oizumi, and K. Aoyama, “Modelica Based Naval Architecture Library for Small Autonomous Boat Design,” 2017, pp. 643–652.) and the equation system built in collaboration between the Master's in Engineering program and the Naval Engineering group at Universidad Tecnologica de Bolivar in Cartagena - Colombia. 
+A Modelica library for modelling electric vehicles. The main objective of the library is to simulate the driving range of EVs using different strategies and configurations tested using the New European Driving Cycle (NEDC). 
+
+Some of the models, make use of some of the battery models from (https://github.com/modelica/ElectricalEnergyStorage). 
+
+This library is still under development, so bugs are expected. 
 
 
