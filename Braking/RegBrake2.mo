@@ -28,7 +28,7 @@ model RegBrake2
   telectric = 0.5*rnowf * Rw ;   //Torque electric
   tmechanic = 0.5*rnowf * Rw;    //Torque mechanic
   preg =      telectric*vel/Rw;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
-  ireg =      preg / 350;
+  ireg =      preg / 360;
   p.i = ireg;
   ireg=Irb;
  

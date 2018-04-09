@@ -1,14 +1,14 @@
 within EVLibrary.Components;
 
 model PowerTrain
- parameter Real n2=0.9;
+ parameter Real Efficiency=0.9;
   //Perdidas en motor
   Modelica.Blocks.Interfaces.RealInput FVelin annotation(
     Placement(visible = true, transformation(origin = {-102, 24}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Gearboxout annotation(
     Placement(visible = true, transformation(origin = {86, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  Gearboxout = FVelin / n2;
+  Gearboxout = FVelin / Efficiency;
  
 
 annotation(

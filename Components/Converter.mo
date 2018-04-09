@@ -2,8 +2,9 @@ within EVLibrary.Components;
 
 model Converter
   //Power=Force*Velocity
-
-  parameter Real n3=0.9;   //Perdidas en convertidor
+  //Bolt 350
+  parameter Real Vnominal(quantity = "Nominal voltage", unit = "V");
+  parameter Real Efficieny=0.9;   //Perdidas en convertidor
   extends Interfaces.Connectors.Twopin;
   Modelica.Blocks.Interfaces.RealInput ForceRequiredByMotor annotation(
     Placement(visible = true, transformation(origin = {-58, 30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -12,7 +13,7 @@ model Converter
   Modelica.Blocks.Interfaces.BooleanInput BoolA annotation(
     Placement(visible = true, transformation(origin = {-42, -6}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = { -120, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation  
-   pin_p.i = if BoolA then (Vel * abs(ForceRequiredByMotor) / n3 / 350) else 0;   
+   pin_p.i = if BoolA then (Vel * abs(ForceRequiredByMotor) / Efficieny / Vnominal) else 0;   
  // v = (ForceRequiredByMotor*Vel)/i;
   //0.001 is the equivalent to divide by 1000 to obtain the v alues in Amperes, and 0.002 is the timestamp to know the current anytime. 380 is the maximum voltage reach by the battery
   annotation(

@@ -2,8 +2,14 @@ within EVLibrary.Storage.Cell;
 
 model Lipo
 //Lipo single cell
+parameter Real capacity(unit="Ah");
+parameter Real Ns;
+parameter Real Np;
 
-//Charge capacity =3600⋅Capacity⋅ f1(Cycle)⋅ f2(Temp)  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
+
+//Charge capacity =0.9*3600⋅Capacity (Ah)⋅  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
+//Bolt capacity: 160 Ah at 100%
+
 
  extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor1 annotation(
@@ -12,11 +18,11 @@ model Lipo
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 99999) annotation(
     Placement(visible = true, transformation(origin = {-80, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 3600 * 145)  annotation(
+  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 0.9*3600 * capacity)  annotation(
     Placement(visible = true, transformation(origin = {-60, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent1 annotation(
     Placement(visible = true, transformation(origin = {14, -38}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Blocks.Math.Gain np(k = 1 / 3) annotation(
+  Modelica.Blocks.Math.Gain np(k = 1/Np) annotation(
     Placement(visible = true, transformation(origin = {56, 38}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent2 annotation(
     Placement(visible = true, transformation(origin = {-20, -38}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
@@ -44,7 +50,7 @@ model Lipo
     Placement(visible = true, transformation(origin = {14, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Math.Product product2 annotation(
     Placement(visible = true, transformation(origin = {160, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- Modelica.Blocks.Sources.Constant ns(k = 90)  annotation(
+ Modelica.Blocks.Sources.Constant ns(k = Ns)  annotation(
     Placement(visible = true, transformation(origin = {120, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Electrical.Analog.Sensors.VoltageSensor vpack annotation(
     Placement(visible = true, transformation(origin = {84, 52}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));

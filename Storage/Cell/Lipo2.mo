@@ -1,9 +1,10 @@
 within EVLibrary.Storage.Cell;
 
 model Lipo2
-//Lipo single cell
+//Lipo single cell with RB
 
-//Charge capacity =3600⋅Capacity⋅ f1(Cycle)⋅ f2(Temp)  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
+//Charge capacity =0.9*3600⋅Capacity (Ah)⋅  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
+parameter Real capacity(unit="Ah");
 
  extends Modelica.Electrical.Analog.Interfaces.TwoPin;
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor1 annotation(
@@ -12,7 +13,7 @@ model Lipo2
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 99999) annotation(
     Placement(visible = true, transformation(origin = {-92, -44}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 3600 * 145) annotation(
+  Modelica.Electrical.Analog.Basic.Capacitor capacitor1(C = 0.9*3600 * capacity) annotation(
     Placement(visible = true, transformation(origin = {-72, -44}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent1 annotation(
     Placement(visible = true, transformation(origin = {14, -38}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

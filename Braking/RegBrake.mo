@@ -28,7 +28,7 @@ model RegBrake
   telectric = if rnowf <= 0.02* bkf then rnowf * Rw else 0;   //Torque electric
   tmechanic = if rnowf > 0.02* bkf then rnowf * Rw else 0;    //Torque mechanic
   preg =      if rnowf <= 0.02* bkf then telectric*vel/Rw else 0;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
-  ireg =      if rnowf <= 0.02* bkf then preg / 350 else 0;
+  ireg =      if rnowf <= 0.02* bkf then preg / 360 else 0;
   p.i = ireg;
   ireg=Irb;
  

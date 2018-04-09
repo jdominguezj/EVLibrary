@@ -2,7 +2,7 @@ within EVLibrary.Examples.Driver1;
 
 model Test_NEDC_CR2
   Real Distance2;
-  EVLibrary.Chassis.Bolt2 Bolt2(tr = 1) annotation(
+  EVLibrary.Chassis.Bolt Bolt(tr = 1) annotation(
     Placement(visible = true, transformation(origin = {-65, -67}, extent = {{-33, -33}, {33, 33}}, rotation = 0)));
   EVLibrary.Road.Asphalt2 asphalt2 annotation(
     Placement(visible = true, transformation(origin = {4, -56}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -20,9 +20,9 @@ model Test_NEDC_CR2
     Placement(visible = true, transformation(origin = {30, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Components.InternalCharger internalCharger annotation(
     Placement(visible = true, transformation(origin = {44, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Storage.Cell.Lipo2 lipo2 annotation(
+  EVLibrary.Storage.Cell.Lipo2 lipo2(capacity = 111.11)  annotation(
     Placement(visible = true, transformation(origin = {76, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EVLibrary.Braking.RegBrake2 regBrake2(Mav = Bolt2.Mv, Rw = Bolt2.Rw, vel = nEDCCycle.Vel) annotation(
+  EVLibrary.Braking.RegBrake2 regBrake2(Mav = Bolt.Mv, Rw = Bolt.Rw, vel = nEDCCycle.Vel) annotation(
     Placement(visible = true, transformation(origin = {76, -66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(lipo2.Irb, regBrake2.Irb) annotation(
