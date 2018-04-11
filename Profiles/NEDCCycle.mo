@@ -11,7 +11,7 @@ model NEDCCycle
   Modelica.Blocks.Sources.Constant const(k = -0.01) annotation(
     Placement(visible = true, transformation(origin = {-22, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Vel annotation(
-    Placement(visible = true, transformation(origin = {88, 64}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {86, 64}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Accel annotation(
     Placement(visible = true, transformation(origin = {88, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput BoolDec annotation(
@@ -20,17 +20,17 @@ model NEDCCycle
     Placement(visible = true, transformation(origin = {86, -62}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-40, 110}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   Modelica.Blocks.Math.Product product1 annotation(
     Placement(visible = true, transformation(origin = {-50, 64}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Constant toms(k = 0.2777777778) annotation(
-    Placement(visible = true, transformation(origin = {-82, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.Constant ToMeterperSeconds(k = 0.2777777778) annotation(
+    Placement(visible = true, transformation(origin = {-84, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EVLibrary.Profiles.DriveTests.NEDC nedc annotation(
     Placement(visible = true, transformation(origin = {-86, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
+  connect(ToMeterperSeconds.y, product1.u2) annotation(
+    Line(points = {{-72, 36}, {-68, 36}, {-68, 58}, {-62, 58}, {-62, 58}}, color = {0, 0, 127}));
+  connect(product1.y, Vel) annotation(
+    Line(points = {{-39, 64}, {88, 64}}, color = {0, 0, 127}));
   connect(nedc.vel, product1.u1) annotation(
     Line(points = {{-74, 70}, {-64, 70}, {-64, 70}, {-62, 70}}, color = {0, 0, 127}));
-  connect(toms.y, product1.u2) annotation(
-    Line(points = {{-70, 36}, {-68, 36}, {-68, 58}, {-62, 58}}, color = {0, 0, 127}));
-  connect(product1.y, Vel) annotation(
-    Line(points = {{-39, 64}, {82, 64}, {82, 66}, {88, 66}}, color = {0, 0, 127}));
   connect(product1.y, derivative1.u) annotation(
     Line(points = {{-39, 64}, {-34, 64}, {-34, 16}, {-32, 16}}, color = {0, 0, 127}));
   connect(less1.y, not1.u) annotation(

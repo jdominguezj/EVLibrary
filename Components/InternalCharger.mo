@@ -10,7 +10,7 @@ parameter Real Efficieny=0.9;
 equation
   Currentdemand = EngineR / Efficieny;
   annotation(
-    Icon(graphics = {Rectangle(origin = {-1, 0}, extent = {{-99, 100}, {101, -100}}), Text(origin = {-3, 6}, extent = {{-73, 36}, {73, -36}}, textString = "IC")}, coordinateSystem(initialScale = 0.1)));
+    Icon(graphics = {Rectangle(origin = {-1, 0}, fillColor = {244, 244, 244}, fillPattern = FillPattern.Solid, extent = {{-99, 100}, {101, -100}}), Line(origin = {-77.6023, 85.6023}, points = {{0, 0}, {0, 0}}), Line(origin = {-0.353553, 0.353553}, points = {{-99.6464, 99.6464}, {100.354, -100.354}, {98.3536, -98.3536}}), Line(origin = {-140, -10}, points = {{0, 10}, {0, -10}}), Line(origin = {-140, -10}, points = {{-8, 0}, {8, 0}}), Line(origin = {-141, -28}, points = {{-7, 0}, {7, 0}})}, coordinateSystem(initialScale = 0.1)));
 
 
 end InternalCharger;
