@@ -21,14 +21,15 @@ model RegBrake
   Modelica.Electrical.Analog.Basic.Ground ground1 annotation(
     Placement(visible = true, transformation(origin = {104, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput Irb annotation(
-    Placement(visible = true, transformation(origin = {-104, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-2, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));  equation
+    Placement(visible = true, transformation(origin = {-104, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-2, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));  
+    equation
   rnowf = pp * Mav;  
   bkf = g * Mav;    //Max Force needly to stop vehicle at gravity deceleration
   pp = if a < (-0.001) then abs(a) else 0;
-  telectric = if rnowf <= 0.02* bkf then rnowf * Rw else 0;   //Torque electric
-  tmechanic = if rnowf > 0.02* bkf then rnowf * Rw else 0;    //Torque mechanic
-  preg =      if rnowf <= 0.02* bkf then telectric*vel/Rw else 0;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
-  ireg =      if rnowf <= 0.02* bkf then preg / 360 else 0;
+  telectric = 0.27*rnowf * Rw ;   //Torque electric
+  tmechanic = 0.27*rnowf * Rw;    //Torque mechanic
+  preg =      telectric*vel/Rw;  //Power regenerated given by Torque*Angular velocity (Vlinear/Radius of wheel)
+  ireg =      preg / 360;
   p.i = ireg;
   ireg=Irb;
  

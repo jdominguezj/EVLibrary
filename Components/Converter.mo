@@ -4,7 +4,7 @@ model Converter
   //Power=Force*Velocity
   //Bolt 350
   parameter Real Vnominal(quantity = "Nominal voltage", unit = "V");
-  parameter Real Efficieny=0.9;   //Perdidas en convertidor
+  parameter Real Efficieny=0.96;   //Perdidas en convertidor
   extends Interfaces.Connectors.Twopin;
   Modelica.Blocks.Interfaces.RealInput ForceRequiredByMotor annotation(
     Placement(visible = true, transformation(origin = {-58, 30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
