@@ -1,5 +1,6 @@
 within EVLibrary.Components;
 
+
 model Kinematics
 //http://media.chevrolet.com/media/us/en/chevrolet/news.detail.html/content/Pages/news/us/en/2016/Jan/naias/chevy/0111-bolt-du.html
   Real tr=1; //Final drive ratio: 7.05:1
@@ -28,3 +29,5 @@ model Kinematics
  
  
 end Kinematics;
+
+
