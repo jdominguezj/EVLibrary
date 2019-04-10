@@ -3,7 +3,7 @@ within EVLibrary.Examples.Driver1;
 model Test_NEDC
   Real Distance2;
   EVLibrary.Chassis.Bolt Bolt(tr = 1) annotation(
-    Placement(visible = true, transformation(origin = {-61, -27}, extent = {{-41, -41}, {41, 41}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-63, -37}, extent = {{-41, -41}, {41, 41}}, rotation = 0)));
   EVLibrary.Road.RNissanLeaf RNissanLeaf1 annotation(
     Placement(visible = true, transformation(origin = {-2, -48}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   EVLibrary.Components.Kinematics2 kinematics2 annotation(
@@ -43,7 +43,7 @@ equation
     Line(points = {{-62, 38}, {-78, 38}, {-78, 38}, {-76, 38}}, color = {0, 0, 127}));
   connect(converter.pin_n, ground1.p) annotation(
     Line(points = {{85, 30}, {100, 30}}, color = {0, 0, 255}));
-  //regBrake.a = nEDCCycle.Accel;
+//regBrake.a = nEDCCycle.Accel;
 //regBrake.BoolDec = nEDCCycle.BoolDec;
   der(Distance2) = nEDCCycle.Vel;
   lipo.Irb = 0;
