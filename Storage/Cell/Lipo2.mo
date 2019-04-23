@@ -1,10 +1,9 @@
 within EVLibrary.Storage.Cell;
 
 model Lipo2
-//Lipo single cell with RB
-
-//Charge capacity =0.9*3600⋅Capacity (Ah)⋅  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
-parameter Real capacity(unit="Ah");
+ //Lipo single cell with RB
+  //Charge capacity =0.9*3600⋅Capacity (Ah)⋅  Taken from: An Accurate Electrical Battery Model Capable of Predicting Runtime and I–V Performance
+  parameter Real capacity(unit = "Ah");
 parameter Real Ns;
 parameter Real Np;
 
@@ -62,11 +61,11 @@ equation
     Line(points = {{54, 70}, {54, 57}, {56, 57}, {56, 50}}, color = {0, 0, 127}));
   connect(voltageSensor1.p, idealCommutingSwitch.p) annotation(
     Line(points = {{24, -14}, {-62, -14}, {-62, -24}, {-62, -24}}, color = {0, 0, 255}));
- connect(voltageSensor1.n, n) annotation(
+  connect(voltageSensor1.n, n) annotation(
     Line(points = {{44, -16}, {100, -16}, {100, 0}}, color = {0, 0, 255}));
- connect(voltageSensor1.v, abs1.u) annotation(
+  connect(voltageSensor1.v, abs1.u) annotation(
     Line(points = {{34, -6}, {34, -1}}, color = {0, 0, 127}));
- connect(feedback1.u2, abs1.y) annotation(
+  connect(feedback1.u2, abs1.y) annotation(
     Line(points = {{12, 20}, {34, 20}, {34, 11}}, color = {0, 0, 127}));
   connect(Accel, idealCommutingSwitch.control) annotation(
     Line(points = {{-76, -2}, {-52, -2}, {-52, -16}, {-52, -16}}, color = {255, 0, 255}));
